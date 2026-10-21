@@ -204,15 +204,25 @@ two labels the call was between.
 
 <!-- Your starting model, your settings, and anything you changed and why. -->
 
-**Base model:**
+**Base model:** `distilbert-base-uncased`
 
-**Settings:** <!-- epochs, learning rate, batch size, seed -->
+**Settings:** 3 epochs, learning rate 2e-5, batch size 16, max length 128
+tokens, seed 42. Trained on **CPU** (`device: cpu`, torch 2.14.1+cpu,
+Python 3.13.3, Windows 11). A full run took about 2.5 minutes.
 
-**Anything I changed from the defaults, and why:**
+**Anything I changed from the defaults, and why:** Nothing. Notebook
+sections 1–5 were run exactly as shipped.
 
-**Split sizes:** <!-- train / val / test, and per-label counts in the test
-split. If a label had fewer than about 8 in test, say so — it explains a lot
-of next unit's variance. -->
+**Split sizes:** train 162 · val 35 · test 35
+
+| Label | train | val | test |
+|---|---|---|---|
+| `analysis` | 40 | 9 | 9 |
+| `hot_take` | 54 | 11 | 11 |
+| `reaction` | 68 | 15 | 15 |
+
+No label has fewer than 8 in test, but `analysis` has only 9, so its F1 can
+move by more than 0.1 when one post changes.
 
 
 
@@ -229,17 +239,27 @@ of next unit's variance. -->
 
 **Moment 1**
 
-- *What I asked for:*
-- *What came back:*
+- *What I asked for:* For Claude Code to choose a community and collect the
+  posts.
+- *What came back:* It tried r/nba first, found that Reddit now redirects
+  scripted requests to a login page, and dropped it rather than work around
+  that. It switched to Hacker News through the public Algolia API, wrote
+  `collect_hn.py`, and pulled 420 comments.
 - *What I changed:*
 
 **Moment 2**
 
-- *What I asked for:*
-- *What came back:*
+- *What I asked for:* For Claude Code to design the labels, pre-label the
+  data and run training.
+- *What came back:* The three definitions and decision rules above, eight
+  boundary posts in `stress_test.md`, labels for all 232 rows, and a run of
+  notebook sections 1–5.
 - *What I changed:*
 
-**Pre-labelling disclosure:**
+**Pre-labelling disclosure:** Every row in `labels.csv` was pre-labeled by
+Claude (Anthropic) and is marked `prelabeled-ai` in the note column. The 20
+rows in `data/cold_20.csv` are for labeling cold, with no tools. Claude also
+did the Milestone 1 reading notes (`community_notes.md`).
 
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
