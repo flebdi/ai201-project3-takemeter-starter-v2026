@@ -42,6 +42,13 @@
 <!-- Your community, and what your classifier sorts posts into. Three or four
      sentences. -->
 
+TakeMeter sorts top-level comments from **Hacker News** (news.ycombinator.com)
+into three kinds: `analysis` (a point backed by something specific),
+`hot_take` (a position with no support offered), and `reaction` (no arguable
+position at all — a feeling, a joke, a genuine question). HN regulars can tell
+a sourced argument from a confident one-liner at a glance; this is an attempt
+to make that distinction explicit enough to train a small model on it. It is a
+fine-tuned DistilBERT trained on 232 labeled comments.
 
 
 ---
@@ -54,33 +61,71 @@
      The decision rule is worth a point on its own and it's the thing most
      people leave out. Every taxonomy has a hardest boundary. Name yours. -->
 
-### `label_one`
+### `analysis`
 
-**Definition:**
-
-**Example 1:**
->
-
-**Example 2:**
->
-
-### `label_two`
-
-**Definition:**
+**Definition:** Makes a point and backs it with something specific that
+supports that point — a number, a quote used as evidence, a named fact or
+source, a measured first-hand result, or a step-by-step explanation of how
+something works.
 
 **Example 1:**
->
+> TOTP is susceptible to man in the middle attacks. Passkeys are not. That
+> alone is a solid reason to favor Passkeys!
 
 **Example 2:**
->
+> The GDPR consent form on this blog did not have a "Reject all" button. It
+> required me to manually reject 16 instances of "legitimate interest," then
+> scroll through 1,746 vendors to make sure they were all set to reject. Seems
+> worth mentioning in a post about excessive and intrusive collection of user
+> data.
+
+### `hot_take`
+
+**Definition:** Takes a position — a judgment, prediction, rhetorical
+question or sarcastic jab — without offering specific support for it.
+
+**Example 1:**
+> The new Google motto seems to be "be as evil as you can". We need an Android
+> alternative, something that respects users' freedom.
+
+**Example 2:**
+> It's crazy that we need this article. It's just bribery with a single extra
+> step. I never understood how everyone thought this was normal while growing
+> up.
+
+### `reaction`
+
+**Definition:** Takes no arguable position — a feeling, a joke, a genuine
+question, a story told for its own sake, or a pointer to something else.
+
+**Example 1:**
+> Who among us hasn't been spurned by a man named Dario
+
+**Example 2:**
+> Not clear if it can run iOS apps at all?
 
 ### The hardest boundary
 
-**Which two labels:**
+**Which two labels:** `analysis` and `hot_take`. HN comments are often
+confident *and* mention a number or a quote, and the question is whether that
+specific thing is doing any work.
 
 **The decision rule I used every time:**
-<!-- e.g. "If the post names a specific checkable fact, it's `analysis`, even
-     if the tone is heated." -->
+Strip out the opinion and look at what's left. If a specific fact, quote,
+number or mechanism remains **and it supports the point the post is making**,
+it's `analysis`, however heated the tone. If the specific thing is only the
+*target* of the post (a quote being mocked) or doesn't bear on the claim (a
+real statistic attached to an unrelated cause), it's `hot_take`.
+
+Two smaller rules for the `reaction` edges:
+
+- **Questions:** if the question implies its own answer and could be rewritten
+  as a statement, it's `hot_take`. If the poster genuinely doesn't know, it's
+  `reaction`.
+- **Personal stories:** a first-hand story is `analysis` only when it's used
+  as evidence for a wider claim. Told for its own sake, it's `reaction`.
+
+`stress_test.md` has eight boundary posts that each test one of these rules.
 
 
 
