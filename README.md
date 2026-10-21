@@ -136,45 +136,67 @@ Two smaller rules for the `reaction` edges:
 <!-- Where you collected from, how you labelled, your counts, and three hard
      cases. -->
 
-**Where the posts came from:**
+**Where the posts came from:** Top-level Hacker News comments on 30
+well-discussed stories (120+ comments each) from the 30 days before
+2026-10-20, pulled through the public HN Algolia API by `collect_hn.py` into
+`data/raw_hn_comments.csv` (420 comments, 14 per story). From that pool I
+dropped the suicide-rates thread (personal disclosures, not takes) and
+link-only husks, then took 8 comments per story for `labels.csv` and set aside
+20 others as `data/cold_20.csv`. r/nba was the first choice; Reddit now
+requires a login for scripted access, which the "public only" rule excludes.
 
-**How I labelled them:** <!-- Cold first? Pre-labelled with AI and corrected?
-Say so plainly — the disclosure is required, not penalised. -->
+**How I labelled them:** All 232 rows in `labels.csv` were **pre-labeled by
+an AI (Claude)** using the definitions above, and every row is marked
+`prelabeled-ai` in the note column. The 20 cold rows in `data/cold_20.csv` are
+unlabeled, for a no-tools pass. Twelve rows carry a `hard:` note naming the
+two labels the call was between.
 
 **Counts per label:**
 
 | Label | Count | Share |
 |---|---|---|
-|  |  |  |
-|  |  |  |
-|  |  |  |
-| **Total** |  | 100% |
+| `reaction` | 98 | 42.2% |
+| `hot_take` | 76 | 32.8% |
+| `analysis` | 58 | 25.0% |
+| **Total** | 232 | 100% |
 
 **Three hard cases**
 
-<!-- Any post that made you pause: what it was, which two labels it could have
-     been, and what you chose. These are worth more than the easy 190. -->
-
 **1.**
-> *The post:*
+> *The post:* "Will Tinder be blamed for the sudden decline in fertility
+> rate? Is there any other plausible explanation to South Korea's sudden and
+> dramatic drop in fertility rate to 0.8? …"
 >
-> *Could have been:*
+> *Could have been:* `analysis` or `hot_take`
 >
-> *I chose, because:*
+> *I chose, because:* `hot_take`. The 0.8 is a real, checkable number, but it
+> shows that the drop happened, not that Tinder caused it. The fact doesn't
+> support the claim, so the decision rule says `hot_take`.
 
 **2.**
-> *The post:*
+> *The post:* "> takes important work off your plate so you get more of your
+> time and attention back — Ok but I want the time and attention so that I can
+> do important work. What bizarre marketing."
 >
-> *Could have been:*
+> *Could have been:* `analysis` or `hot_take`
 >
-> *I chose, because:*
+> *I chose, because:* `hot_take`. It quotes the source, which usually points
+> to `analysis`, but the quote is the thing being mocked, not evidence for
+> anything.
 
 **3.**
-> *The post:*
+> *The post:* "I can't prove it, but I still think this is (partly) due to a
+> recent EU regulation majorly backfiring. … the release of the source code is
+> counted as the first release of an update and starts the timer. I'm pretty
+> sure Google is delaying public AOSP updates to give their partners … more
+> time…"
 >
-> *Could have been:*
+> *Could have been:* `analysis` or `hot_take`
 >
-> *I chose, because:*
+> *I chose, because:* `analysis`. The poster admits they can't prove it, but
+> they set out a specific mechanism step by step (update deadline, source
+> release starts the timer, so Google delays the source release). A reader can
+> check that mechanism, which `hot_take` doesn't offer.
 
 ---
 
