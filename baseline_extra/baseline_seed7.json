@@ -1,0 +1,209 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 35,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": true,
+  "scores": {
+    "n": 35,
+    "accuracy": 0.2857142857142857,
+    "f1_macro": 0.24465811965811968,
+    "per_label": {
+      "analysis": {
+        "precision": 0.23333333333333334,
+        "recall": 0.7777777777777778,
+        "f1": 0.35897435897435903,
+        "support": 9
+      },
+      "hot_take": {
+        "precision": 0.6,
+        "recall": 0.2727272727272727,
+        "f1": 0.37499999999999994,
+        "support": 11
+      },
+      "reaction": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "support": 15
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "I wonder if the three search engines get access to cloudflare protected sites without any captcha or bot interventions",
+      "gold": "reaction",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Wow! Though need to see its token efficiency to better assess. Been hearing rumors it generates much more output tokens per task.",
+      "gold": "reaction",
+      "predicted": "analysis"
+    },
+    {
+      "text": "every generation of control freak eventually gets tired of Android as the features that actually have market traction get merged into iOS just hang up the hat and never look back",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Nope. If an AI agent can't intuit how I will feel about an action it's taking on my behalf, I'm not give it access to my digital life. OpenClaw, Muse, Dots... doesn't matter which one. All are an equally awful idea.",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Oh, this is an easy question to answer. The AI layer handles queries as plaintext, which means if you're searching for say a quote from a book, it will often misinterpret as a direct statement from you, not a string you're trying to match on the internet. Especially if the quote is an imperative statement. I'll be curious to see how they resolve this issue. But it has been chronic for awhile now; they SWAT individual instances of misinterpretation but new ones keep sneaking in.",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "They finally managed to get rid of project, middle and top managers! Next natural step: CEOs staring tens of dots to control other humans and agents XD",
+      "gold": "reaction",
+      "predicted": "analysis"
+    },
+    {
+      "text": "And yet they can't fix the janky bugs when you scroll or show/hide chain of though, commands executed, configuring plug-ins from the options menu etc.",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "> Security gets its own automated review too. ... You either fix it or close the thread with a short reason, which is how you clear a false positive. I hope this is only for low-risk false positives. Dismissing a critical finding as a false positive should still involve AppSec. You could improve revert rates while simultaneously introducing more security vulnerabilities. And the linked \"claude-code-security-review\" explicitly states in the README > This action is not hardened against prompt injection attacks That's a significant limitation for an AI security review control, no?",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "What a terrible marketing page. I read it a few times and still have zero idea what this thing is.",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "> Our findings suggest that 90% of American working hours are spent on tasks with little or no coverage from existing benchmarks. This makes it very hard to know how good AI models are at the work Americans actually do. > ... > But even after controlling for AI-exposure, O*NET tasks from occupations with larger wage bills are significantly overrepresented among benchmark prompts: So, in short: they want AI to take the good jobs. AI is not coming for jobs with tasks like \"gather and empty trash\" or \"service, clean, or supply restrooms,\" or \"mix water and detergents or acids in containers to prepare cleaning solutions according to specifications.\" We software engineers and lawyers would be smart to start retraining (and adjusting our living standards) now! And this points to one of the ways AI will help improve society and living standards for all: we'll have cleaner, better-maintained bathrooms, as labor one wasted on engaging intellectual tasks is redirected towards menial, low-pay tasks that still need a human touch. Reason to be optimistic, amirite?",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "I think a lot of this is starting to bubble up to the surface after PIX made headlines[1] [1]",
+      "gold": "reaction",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Interesting to see how this can be compared with Exa, Alas, Cloudflare really is shipping many great orthogonal products recently.",
+      "gold": "reaction",
+      "predicted": "analysis"
+    },
+    {
+      "text": "FWIW, Pangram identifies several sections as 100% AI-written.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Anyone tried this algo to match co-founders?",
+      "gold": "reaction",
+      "predicted": "analysis"
+    },
+    {
+      "text": "At least Germany is moving smarter than UK government...",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "> All three support Zero Data Retention for requests made through Cloudflare But does CloudFlare itself commit to zero data retention? If not, this isn\u2019t too meaningful.",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "I hope this actually fixes the terrible writing style of Opus 5",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "In Greece there is no incentive to fix power losses since the electric bill has a power losses line item. You can steal as much as you want. The ones who pay will pay.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Title is: How the Claude Code team does code review",
+      "gold": "reaction",
+      "predicted": "analysis"
+    },
+    {
+      "text": "We need a third option. Be it SalfishOS, Ubuntu Touch, Nura, or whatever picks up with a sizable community. We just need to start developing and investing in that one. It won't be perfect, but it will offer an alternative and control to the users.",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "From what I'd read, SHA256 in git is showing every sign of being another IPv6. In particular: - It's implemented in a non-backwards-compatible way - The benefits over the older model are a bit nebulous - There's a large amount of tooling that needs to catch up, and little sign that there is movement there",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Who thought 5 years ago that searching online would have a cost...",
+      "gold": "reaction",
+      "predicted": "analysis"
+    },
+    {
+      "text": "After the neat animations I was disappointed not to see that leftmost person die because the server fell on them in the last example.",
+      "gold": "reaction",
+      "predicted": "analysis"
+    },
+    {
+      "text": "if i would think aloud, that would most probably affect what or how i think. thinking silently allows me to have all kind of thoughts that could seem or be inappropriate when said loud and i would have to deal with the reactions. i think this might have fascinating implications.",
+      "gold": "reaction",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Weird choice by CloudFlare, would been great if they have shared why it was created. I use CloudFlare developer platform and quite happy with tools, but I didn\u2019t use the gateway API and always used OpenRouter which does support web search. I can see it useful for those who didn\u2019t do any integrations or like to keep logs at one place, but did customers actually ask for this?",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Worse still most of the cost savings from AI in software development is primarily due to labor inefficiency, such as tasks more efficiently accomplished in other ways. Most of that is due to development reliance on inefficient conventions to cover for poor training and emotional insecurity. No matter how you slice it it\u2019s always human capital problem more than a technology problem.",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "'tux1968 shared a great story about helping a crow a few years ago.",
+      "gold": "reaction",
+      "predicted": "analysis"
+    },
+    {
+      "text": "A lot of replies here seem to be asserting that this \"isn't that hard\" without addressing the thing that makes it most hard: submodule compatibility and the breadth of tooling",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "> The \u201cAI\u201d industry has many flaws, the word \u201cconsent\u201d being seemingly missing from training data and company handbooks is one of them Yes! The most consentless (don't underline this in red firefox!) technology that I can think of certainly. edit: also install and use Linux",
+      "gold": "reaction",
+      "predicted": "analysis"
+    },
+    {
+      "text": "tldr; they passed the administration of power from the corrupt government officials to Tata power (part of the Tata conglomerate) and BSES (part of another conglomerate Reliance). They modernized the setup and closed loopholes and avenues of corruption and also made stealing of power by the corrupt sections of public difficult.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "I just tried to play around with it on my RTX pro 6000 setup, it spends way too many tokens on overthinking stuff even if it\u2019s able to catch the correct approach Its speed is pretty good on the other hand with only 3B active parameters I am getting around 170 tkn/s on fp8",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Seems like a lot of water to me. And what does society get back from google in return?",
+      "gold": "hot_take",
+      "predicted": "analysis"
+    },
+    {
+      "text": "I run a small git/jj forge and for us it's already painful dealing with this. Can't imagine how GitHub is going to handle it.",
+      "gold": "reaction",
+      "predicted": "analysis"
+    },
+    {
+      "text": "I saw some video once about intelligence tests on crows. In one experiment they had a tall but thin glass of water with some treat floating on the surface but it was too low for the crow to reach. So the crow started dropping rocks into the glass, causing the water level to rise, until it could reach the treat. I was so impressed, I wanted to replicate that. I went to a park around the corner with some nuts to befriend some crows. My plan was to just feed them for a while so they would trust me. But after a few days I had flock of crows following me everywhere through the city. That was a bit too much.",
+      "gold": "reaction",
+      "predicted": "analysis"
+    },
+    {
+      "text": "The benchmarks are impressive given the problem space they are working in.",
+      "gold": "reaction",
+      "predicted": "analysis"
+    }
+  ]
+}

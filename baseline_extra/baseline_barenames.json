@@ -1,0 +1,209 @@
+{
+  "model": "facebook/bart-large-mnli",
+  "n": 35,
+  "seed": 42,
+  "held_out": true,
+  "used_definitions": false,
+  "scores": {
+    "n": 35,
+    "accuracy": 0.2857142857142857,
+    "f1_macro": 0.2565359477124183,
+    "per_label": {
+      "analysis": {
+        "precision": 0.3333333333333333,
+        "recall": 0.1111111111111111,
+        "f1": 0.16666666666666666,
+        "support": 9
+      },
+      "hot_take": {
+        "precision": 0.2608695652173913,
+        "recall": 0.5454545454545454,
+        "f1": 0.3529411764705882,
+        "support": 11
+      },
+      "reaction": {
+        "precision": 0.3333333333333333,
+        "recall": 0.2,
+        "f1": 0.25,
+        "support": 15
+      }
+    }
+  },
+  "predictions": [
+    {
+      "text": "Previous one is barely in top 50 on arena.ai",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "I feel it leaves a bitter flavor how Ryan Dahl pushed so hard for Deno and Deno Deploy for years, just to let them die within 1 year and 6 months respectively. Thankfully I don't have any codebases that heavily use Deno features, otherwise this would be a steep curve now.",
+      "gold": "reaction",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "This is tangential but I wrote a Go utility a while back to implement this stable matching algorithm It\u2019s an effective yet simple algorithm. Also widely used in North America to match medical students with their residency of choice.",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Reminds me of the old slashdot post from 25yrs ago that people still chat on",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "In the Twitter thread linked, the person confirms two things: 1. It saturated the local network with 1TB of metadata sniffing scans, not the network uplink to the outside world. 2. It does so because, as Keurig notes, it\u2019s collecting data about your household in order to let Keurig sell it to advertisers.",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "I would take public lobbying anyday over outlawing it like where I live and it being restricted to people who have enough money to do it behind closed doors.",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "A bit scary that nobody on the main track and one person on the side track somehow ends up with Jev outputting a coin flip for \"kill 1 for nobody\".",
+      "gold": "reaction",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Interesting to see how this can be compared with Exa, Alas, Cloudflare really is shipping many great orthogonal products recently.",
+      "gold": "reaction",
+      "predicted": "analysis"
+    },
+    {
+      "text": "Not trying to start flamewars, but more and more I wonder how much are people willing to put up with such practices. On linux for 15+ years and everytime I try to use mac or win, it is an ordeal. And ads. F*cking ads in a system someone has purchased. And spying. Really user hostile environment. No, thank you.",
+      "gold": "hot_take",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Let\u2019s put them in robots! I\u2019m sure It\u2019ll turn out just fine",
+      "gold": "hot_take",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Ideally, passkeys should be cattle, not pets. You should have more than one per account, saved to more than one password manager. Then it's fine if they're not copyable because you can get another.",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Seems like a lot of water to me. And what does society get back from google in return?",
+      "gold": "hot_take",
+      "predicted": "reaction"
+    },
+    {
+      "text": "Really cool testing, only wish the conclusions were written in a more readily easy to interpret way. So many of the tables required me to think so hard \"what is the author trying to say here\". Would be easier if the results were just given from a decision perspective. One example: \"Its own server or twenty people?\" and the axis is \"share of versions\" ... makes no sense until read the fine print and interpret it.",
+      "gold": "analysis",
+      "predicted": "analysis"
+    },
+    {
+      "text": "SMB improvements ( I've moved to borg, but depending on how this goes may give time machine another try: - Add opt-in Apple Time Machine support Implement the AAPL negotiation and related Finder, stream, COPYCHUNK, sparse-file, CHANGE_NOTIFY, and RPC compatibility required for Time Machine shares, allowing macOS backupd to use ksmbd for backups Still sucks that it has to be reverse-engineered",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "I am not a lawyer, but I can't see how any court would enforce this unconscionable term in a clickwrap license.",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "At this point I'm convinced they are skipping numbers so soon they will be at or ahead of OpenAI's numbering scheme. Is the Xbox 360 (Xbox 2) vs PS3 debacle all over again.",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Americans please stop sanctifying Europe/Europeans. It's annoying.",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Title is: How the Claude Code team does code review",
+      "gold": "reaction",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "> In areas where theft was particularly rampant and losses were as high as 83 percent, according to Tata, the companies took a different strategy. These pockets of Delhi were predominantly occupied by low-income families. Tata Power, and later BSES, worked to improve the water supply for these residents and provide educational opportunities, such as instruction in reading and writing in Hindi as well as financial literacy. These efforts focused on the women, who were at home more, and paid them to collect electricity payments from their neighbors. Bill payment rates from these areas are now on par with those of other parts of Delhi This is... interesting on multiple levels.",
+      "gold": "reaction",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "I don\u2019t really understand why we need this. Why another screen? iPhones, iPads, Mac\u2019s and now another one for the kitchen.",
+      "gold": "hot_take",
+      "predicted": "reaction"
+    },
+    {
+      "text": "This article is full of mistakes and misleading claims: 1) It's claiming SHA1 insecurity is theoretical, while SHAttered from 2017 was specifically a pratical proof of concept. The only reason Git wasn't affected, is because they didn't bother bruteforcing a git-blob prefix. 2) It's claiming collision attacks don't matter, only second-preimage attacks do. This is incorrect, collision attacks are enough for code-smuggling problems, when two repositories are on the same git commit (verified by the full commit hash), yet contain different code in their git checkout. 3) The Linus quote \"The real security is in distribution\" is arguing that \"git's content-addressed system should not be used to address content\". It's arguing that, in case of curl|sh, you shouldn't use a sha256sum-gate to pin the content to something you've reviewed, you should instead ensure curl is fetching from an https server.",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "TOTP is susceptible to man in the middle attacks. Passkeys are not. That alone is a solid reason to favor Passkeys!",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "I just tried to play around with it on my RTX pro 6000 setup, it spends way too many tokens on overthinking stuff even if it\u2019s able to catch the correct approach Its speed is pretty good on the other hand with only 3B active parameters I am getting around 170 tkn/s on fp8",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "I'm somewhat surprised they would say Claude is writing 90% of their code at this point. Did they get tired of reporting new milestones, or has there been a plateau?",
+      "gold": "reaction",
+      "predicted": "reaction"
+    },
+    {
+      "text": "> 4. It thinks in German This means that it\u2019s always on time, it uses acronyms for everything and when there\u2019s a decision to be made, it sets up a committee.",
+      "gold": "reaction",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "I hear how hurtful and exhausting this situation is. It is incredibly painful to feel an old friend keep letting you down or becoming weird. If you want to talk about what happened with Google, HN is here to listen. If you'd like to figure out what to do next, let me know.",
+      "gold": "reaction",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "That explains why the UI keeps changing. How is this a proper product? Every time you open the desktop app the buttons may be on a completely random place",
+      "gold": "hot_take",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Whenever I see a story about how clever crows are, I'm reminded of that guy who gave the TED talk about crows collecting rubbish after sporting events and picking up coins in return for food. Turned out he made it all up.",
+      "gold": "analysis",
+      "predicted": "reaction"
+    },
+    {
+      "text": "It\u2019d be interesting to see if rust pickup is improving or not.",
+      "gold": "reaction",
+      "predicted": "analysis"
+    },
+    {
+      "text": "The ignorant, hostile, negative, and, frankly, kinda racist comments here really are just a sad showing for the currently online crowd. But anyway. I think the main oversight when dismissing this is that not every use-case is coding a SV-style startup app. That market is quite saturated, so it would make sense to create something locally for the use-cases currently underserved by LLMs. We will probably learn more about what this can really do once quants become available that can be run by people without an SV salary (and the biases that come with that).",
+      "gold": "hot_take",
+      "predicted": "reaction"
+    },
+    {
+      "text": "maybe the font experts can check, but I\u2019m pretty sure they\u2019re using comic sans for the text in the diagrams :)",
+      "gold": "reaction",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "I don't know if it if 90%, but it is interesting how many things I do are not covered by standard tracking, but become visible once I am not there to keep an eye on them. Naturally, I only had one manager who kinda knew what was going on around him -- in case you are wondering: not the current one.",
+      "gold": "reaction",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "Not clear if it can run iOS apps at all?",
+      "gold": "reaction",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "The Onion predicted this in 2014: \"Teens Migrating From Facebook To Comments Section Of Slow-Motion Deer Video\" ( Reminds me a little bit of the agent improvised coordination schemes.",
+      "gold": "reaction",
+      "predicted": "hot_take"
+    },
+    {
+      "text": "This means, if you migrate your repo, every single commit message that contains text like: \"please see commit <sha1>\" will now be broken. This will be a train wreck. I hope they don't release before adding compatibility modes to keep the existing sha1's around in the database.",
+      "gold": "analysis",
+      "predicted": "hot_take"
+    }
+  ]
+}
