@@ -209,6 +209,7 @@ two labels the call was between.
 **Settings:** 3 epochs, learning rate 2e-5, batch size 16, max length 128
 tokens, seed 42. Trained on **CPU** (`device: cpu`, torch 2.14.1+cpu,
 Python 3.13.3, Windows 11). A full run took about 2.5 minutes.
+*(Unit 6: the one improvement raised epochs to 10. See The Improvement.)*
 
 **Anything I changed from the defaults, and why:** Nothing. Notebook
 sections 1–5 were run exactly as shipped.
@@ -254,6 +255,21 @@ move by more than 0.1 when one post changes.
 - *What came back:* The three definitions and decision rules above, eight
   boundary posts in `stress_test.md`, labels for all 232 rows, and a run of
   notebook sections 1–5.
+- *What I changed:*
+
+**Moment 3 (unit 6)**
+
+- *What I asked for:* For Claude Code to run the unit-6 tests: the baseline,
+  the three seeds, the confusion matrix, the five criteria, labels for the
+  30 staff posts, and the improvement.
+- *What came back:* It found that `criteria.md` had been left blank in
+  unit 5 and wouldn't present new criteria as pre-registered. They're
+  disclosed as written in unit 6. It committed the baseline prediction before
+  running the baseline. It also spotted that the training loss had never
+  left chance level (1.04 vs ln 3 ≈ 1.10). That pointed the improvement at
+  epochs rather than relabeling. It ran the zero-shot baseline on all three
+  seeds' splits, not just seed 42, so criterion 3 could be tested on every
+  seed.
 - *What I changed:*
 
 **Pre-labelling disclosure:** Every row in `labels.csv` was pre-labeled by
@@ -546,26 +562,76 @@ expected: post 5 (`analysis` over `hot_take`), 7 (`analysis` over
 
 ## The Improvement
 
-**What I changed:**
+**What I changed:** One training setting: `EPOCHS` from 3 to 10 in section
+2 of the notebook, committed in 05e86fa. Learning rate, batch size, max
+length, the labels, the taxonomy and the criteria are unchanged. Re-run with
+`RUN_LABEL = "after"` on the same three seeds (42, 7, 2024), so each seed has
+the same train/val/test split as before. Device: CPU, as before. About 11–12
+minutes per seed, against 2.8 minutes before.
 
-**Which diagnosis pointed at it:**
+**Which diagnosis pointed at it:** Criteria 1, 2 and 4. Training loss stayed
+at chance level (1.04 vs ln 3 ≈ 1.10), and the errors went to the majority
+class instead of across a boundary. That's a model that hadn't trained, not
+one confused by inconsistent labels. In the after run, validation loss falls
+every epoch (seed 42: 1.05 → 0.72) and mean training loss ends near 0.71–0.74.
 
 ### Run Log — After
 
 | Criterion | Target | Seed 42 | Seed 7 | Seed 2024 | Verdict |
 |---|---|---|---|---|---|
-| 1.  |  |  |  |  |  |
-| 2.  |  |  |  |  |  |
-| 3.  |  |  |  |  |  |
-| 4.  |  |  |  |  |  |
-| 5.  |  |  |  |  |  |
+| 1. Overall accuracy | ≥ 0.60 | 0.514 | 0.714 | 0.743 | MISSED |
+| 2. Every label F1 (lowest shown) | ≥ 0.50 | 0.500 (`analysis`) | 0.600 (`hot_take`) | 0.588 (`analysis`) | MET, on the line |
+| 3. Beats baseline accuracy by | ≥ +0.05 | +0.229 (0.514 vs 0.286) | +0.429 (0.714 vs 0.286) | +0.486 (0.743 vs 0.257) | MET |
+| 4. Recall on `hot_take` | ≥ 0.50 | 0.455 | 0.545 | 0.909 | MISSED |
+| 5. Confidence gap (most − least confident third) | ≥ +0.15 | +0.455 (0.818 vs 0.364) | +0.364 (0.818 vs 0.455) | 0.000 (0.727 vs 0.727) | MISSED |
 
-**Did it help, and how do I know:**
+**Before and after side by side** (accuracy and macro F1 per seed):
 
-<!-- If it didn't, say so. Relabelling that didn't help is a genuinely
-     interesting result and earns full credit. -->
+| Measure | Before 42 | Before 7 | Before 2024 | After 42 | After 7 | After 2024 |
+|---|---|---|---|---|---|---|
+| Overall accuracy | 0.429 | 0.514 | 0.486 | 0.514 | 0.714 | 0.743 |
+| Macro F1 | 0.200 | 0.363 | 0.331 | 0.514 | 0.683 | 0.727 |
+| F1 — `analysis` | 0.000 | 0.000 | 0.200 | 0.500 | 0.625 | 0.588 |
+| F1 — `hot_take` | 0.000 | 0.421 | 0.154 | 0.526 | 0.600 | 0.833 |
+| F1 — `reaction` | 0.600 | 0.667 | 0.638 | 0.514 | 0.824 | 0.759 |
 
+Verdicts moved from 1 MET / 4 MISSED to 2 MET / 3 MISSED (criterion 2 flipped).
 
+Confusion matrix after, pooled over the three seeds:
+
+| true \ predicted | analysis | hot_take | reaction |
+|---|---|---|---|
+| **analysis** | 14 | 3 | 10 |
+| **hot_take** | 3 | 21 | 9 |
+| **reaction** | 5 | 6 | 34 |
+
+Seed 42 alone (section 7's output):
+
+| true \ predicted | analysis | hot_take | reaction |
+|---|---|---|---|
+| **analysis** | 4 | 0 | 5 |
+| **hot_take** | 0 | 5 | 6 |
+| **reaction** | 3 | 3 | 9 |
+
+**Did it help, and how do I know:** Yes, clearly. Accuracy rose on every
+seed: +0.09, +0.20 and +0.26. Macro F1 roughly doubled (0.30 → 0.64 averaged
+over seeds). `analysis` and `hot_take` went from near zero to 0.50–0.83. The
+pooled diagonal went from 50 of 105 posts correct to 69 of 105. The model no
+longer collapses to `reaction`: the after matrix has errors in every cell.
+
+Two things it did **not** fix:
+
+- **Stability got worse.** Accuracy now spreads 0.229 across seeds, against
+  0.086 before, which is past the 10-point line. The before run looked
+  stable only because every seed was stuck near the majority-class score.
+  Seed 42 is the outlier at 0.514. Its validation accuracy reached 0.657, so
+  its test split simply has harder posts. With 35 test posts, one post is
+  0.029, and the seed-to-seed gap is about 8 posts. The dataset is too small
+  for a stable measure, and three of the four misses below come down to one
+  seed.
+- **Criterion 2 is met only on the line.** Seed 42's `analysis` F1 is
+  exactly 0.500 (4 of 9 caught, 4 of 7 predictions right). One more
+  misclassified `analysis` post and it's a miss.
 
 ---
 
@@ -573,13 +639,48 @@ expected: post 5 (`analysis` over `hot_take`), 7 (`analysis` over
 
 <!-- For each criterion still missed: what you'd do, and why you stopped. -->
 
+**Criterion 1, accuracy ≥ 0.60 (missed on seed 42: 0.514).** Seeds 7 and
+2024 clear it comfortably. On seed 42, 11 of its 17 errors are `analysis` or
+`hot_take` called `reaction` (5 + 6). Next I'd add about 30 more `analysis`
+posts, my thinnest label at 58 rows, so its test split isn't 9 posts. I'd also
+run more than three seeds, so one hard split doesn't decide the verdict. I
+stopped because the brief allows one change per unit, and this one was it.
 
+**Criterion 4, `hot_take` recall ≥ 0.50 (missed on seed 42: 0.455, 5 of 11).**
+One more caught `hot_take` would have met it. The 6 missed posts all went to
+`reaction`. That's the boundary covered by my question rule ("a question that
+implies its own answer is `hot_take`"), and short sarcastic one-liners look a
+lot like jokes. I'd re-read the `hot_take`/`reaction` rows that carry a
+`hard:` note, and check them against the staff agreement result when it
+arrives. That's the only evidence that can say whether I applied the question
+rule two ways. I stopped because relabeling would be a second change.
+
+**Criterion 5, confidence gap ≥ 0.15 (missed on seed 2024: 0.000).** On seed
+2024 the most and least confident thirds both scored 0.727. The model was
+right about as often when unsure as when sure. With 11 posts per third, that's
+8 of 11 in both thirds, so the measure itself is coarse at this size. A larger
+test split, or pooling predictions across seeds before taking thirds, would
+show whether the confidence score means anything. I didn't change it, because
+that would change how the criterion is measured after seeing the result.
+
+**The agreement check (no verdict possible yet).** `data/staff_labels.csv`
+hasn't arrived from my TF, so the agreement rate and the adjudication aren't
+done. That's the biggest missing piece of evidence. Without it, I can't
+confirm the remaining `hot_take`→`reaction` errors are a model problem rather
+than a labeling one.
 
 **The gap between what I meant my labels to capture and what the model
 learned:**
 <!-- Two sentences. Your confusion matrix is the evidence. -->
 
-
+I meant the hard line to be `analysis` vs `hot_take`: whether a specific fact
+supports the point. But the model has learned that pair fairly well (only 3
+confusions each way in the pooled after matrix). What it still gets wrong is
+whether a post takes a position at all: 19 `analysis` and `hot_take` posts
+called `reaction`, and 11 `reaction` posts the other way. So the model
+separates "has evidence" from "has none" better than it separates "argues
+something" from "just responds". That second line is the one my own taxonomy
+defines by an absence ("takes no arguable position").
 
 <!-- ═════════════════════════════════════════════════════════════════════
 
