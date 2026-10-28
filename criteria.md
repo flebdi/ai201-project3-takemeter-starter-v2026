@@ -51,63 +51,58 @@ whether you hit them:
 
 ---
 
-## 1.
+> **When these were written — read first.** This file was left blank in
+> unit 5. These five criteria were written in **unit 6 (2026-10-28) by Claude**
+> at my request, **after** the unit-5 `results.json` (0.43 accuracy, every
+> post predicted `reaction`) and the three-seed "before" run were visible, and
+> **before** the baseline was run. They are not pre-registered. To keep them
+> honest, every target was set from the data and taxonomy — the 42% majority
+> share, the 9-post `analysis` test split, the 11-post confidence thirds — and
+> none was moved toward the observed numbers. Each must hold on all three seeds.
 
-<!-- Your criterion. It must name a number. -->
+## 1. Overall accuracy of at least 0.60 on the held-out split, on every seed.
 
-
-
-**Why this target:**
-
-
-
----
-
-## 2.
-
-<!-- Your criterion. -->
-
-
-
-**Why this target:**
-
-
+**Why this target:** `reaction` is 98 of 232 rows (42%), so a model that
+always guesses it scores about 0.43 on a stratified test split. 0.60 is
+roughly 17 points above that — the least I would call "learned something"
+for three labels whose boundaries I had to write rules for.
 
 ---
 
-## 3.
+## 2. Every label has an F1 of at least 0.50 on the held-out split, on every seed.
 
-<!-- Your criterion. -->
-
-
-
-**Why this target:**
-
-
+**Why this target:** `analysis` is my smallest label (58 rows), so only 9
+posts land in each test split and one post moves its F1 by more than 0.1.
+That is why this bar is looser than criterion 1. Below 0.50 on any label, the
+classifier can't be trusted to sort that label at all.
 
 ---
 
-## 4.
+## 3. Beats the zero-shot baseline's accuracy by at least 0.05, on the same test posts, on every seed.
 
-<!-- Your criterion. -->
-
-
-
-**Why this target:**
-
-
+**Why this target:** the baseline reads the same three definitions with no
+training. 35 test posts means one post is about 0.03, so a gap under 0.05 is
+one or two posts — not evidence that fine-tuning on 162 examples added
+anything. The baseline is scored on each seed's own test split so the
+comparison is like-for-like.
 
 ---
 
-## 5.
+## 4. Recall on `hot_take` of at least 0.50, on every seed.
 
-<!-- Your criterion. -->
+**Why this target:** `hot_take` is the label the project exists to find, and
+it sits on both of my hard boundaries (against `analysis` on the support rule,
+against `reaction` on the question rule). If the model misses more than half
+of the real ones, it isn't doing the job, whatever its overall accuracy.
 
+---
 
+## 5. Accuracy on the model's most-confident third is at least 0.15 higher than on its least-confident third, on every seed.
 
-**Why this target:**
-
-
+**Why this target:** each third is 11 posts, so 0.15 is about two posts —
+anything smaller is noise at this size. If confident guesses aren't right
+more often than unsure ones, the confidence score can't be used to decide
+which predictions to trust.
 
 ---
 

@@ -290,6 +290,13 @@ the training data. That makes it evidence about the consistency of those labels.
 <!-- Milestone 1 asks you to write this BEFORE seeing the trained numbers. A
      prediction made afterwards isn't one. -->
 
+*(Written by Claude at my request, and committed before `baseline.py` was
+run. The trained numbers were already known.)* The trained model will beat
+the baseline only on `reaction` F1, because it predicts `reaction` almost
+every time. The baseline will match or beat it on overall accuracy and do
+clearly better on `analysis` and `hot_take` F1, where the trained model is
+near zero.
+
 **What the gap actually means:**
 <!-- If the baseline matched your trained model, your fine-tuning added
      nothing — and that is a real finding, not a failure. Say it plainly. -->
