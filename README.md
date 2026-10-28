@@ -261,6 +261,12 @@ Claude (Anthropic) and is marked `prelabeled-ai` in the note column. The 20
 rows in `data/cold_20.csv` are for labeling cold, with no tools. Claude also
 did the Milestone 1 reading notes (`community_notes.md`).
 
+**Staff-set disclosure (unit 6):** The 30 labels in `my_staff_labels.csv` were
+assigned by Claude under `data/staff_taxonomy.md`, before
+`data/staff_labels.csv` was obtained. Because Claude also labeled all 232 rows
+of `labels.csv`, the agreement check measures the same labeler that produced
+the training data. That makes it evidence about the consistency of those labels.
+
 <!-- ═══════════════════════ UNIT 6 — THE TEST ═══════════════════════
 
      Don't fill these in during unit 5.
